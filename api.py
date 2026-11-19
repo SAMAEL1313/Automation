@@ -13,7 +13,7 @@ def index():
     if request.method == "POST":
         router_device = {
             'device_type': 'cisco_ios_telnet',
-            'ip': "192.168.10.215",
+            'ip': "192.168.10.23",
             'port': 32770,
             'username': 'admin',
             'password': 'eve123',
@@ -39,7 +39,7 @@ def index():
         except Exception as e:
             error = f"Connection failed: {e}"
 
-        return render_template("index.html", results=results, error=error)
+    return render_template("index.html", results=results, error=error)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

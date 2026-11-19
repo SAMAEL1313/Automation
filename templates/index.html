@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>R1 Automation Dashboard</title>
+    <style>
+        html {
+            min-height: 100%;
+        }
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: linear-gradient(135deg, #071a12 0%, #0f2e20 100%);
+            color: #e6f4ea;
+        }
+        h1, h3 {
+            color: #ffffff;
+        }
+        button {
+            padding: 10px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #16a34a;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+        }
+        button:hover {
+            background-color: #15803d;
+        }
+        pre {
+            background: #0a1f16;
+            color: #d1fae5;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #1e4634;
+            overflow-x: auto;
+        }
+        .error {
+            color: #f87171;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cisco 3725 (R1) Automation</h1>
+    <form method="POST">
+        <button type="submit">Fetch Router Info</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% for cmd, output in results.items() %}
+        <h3>{{ cmd }}</h3>
+        <pre>{{ output }}</pre>
+    {% endfor %}
+</body>
+</html>
